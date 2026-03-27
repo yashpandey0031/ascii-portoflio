@@ -985,7 +985,7 @@ export function TerminalLanding() {
               className="pointer-events-none absolute top-8 left-4 z-0 hidden h-115 w-90 md:block"
             >
               <Image
-                src="/davinchi.jfif"
+                src="/davinchi.jpg"
                 alt="DaVinci inspiration"
                 fill
                 className="object-cover opacity-55 grayscale"
