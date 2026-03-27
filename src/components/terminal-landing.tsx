@@ -714,7 +714,7 @@ export function TerminalLanding() {
       {!bootDone ? (
         <section className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col justify-between px-6 py-8 sm:px-10 sm:py-10">
           <header className="text-xs uppercase tracking-[0.18em] text-zinc-300 sm:text-sm">
-            ascii_portfolio bios // v0.1.7
+            system bios // v0.1.7
           </header>
 
           <div className="space-y-6 sm:space-y-8">
@@ -762,11 +762,17 @@ export function TerminalLanding() {
 
           <div className="mt-4 flex-1 border border-t-0 border-zinc-700 bg-[#040404] px-4 py-5 sm:px-6 sm:py-8">
             <pre className="text-[10px] leading-tight text-zinc-300 sm:text-xs">
-              {String.raw`__   __   _    ____  _   _   ____  _   _ ____  _____ __   __
-\ \ / /  / \  / ___|| | | | |  _ \| \ | |  _ \| ____|\ \ / /
- \ V /  / _ \ \___ \| |_| | | |_) |  \| | | | |  _|   \ V /
-  | |  / ___ \ ___) |  _  | |  __/| |\  | |_| | |___   | |
-  |_| /_/   \_\____/|_| |_| |_|   |_| \_|____/|_____|  |_|
+              {String.raw`__   __    _    ____  _   _ 
+\ \ / /   / \  / ___|| | | |
+ \ V /   / _ \ \___ \| |_| |
+  | |   / ___ \ ___) |  _  |
+  |_|  /_/   \_\____/|_| |_|
+
+ ____   _    _   _ ____  _______   __
+|  _ \ / \  | \ | |  _ \| ____\ \ / /
+| |_) / _ \ |  \| | | | |  _|  \ V / 
+|  __/ ___ \| |\  | |_| | |___  | |  
+|_| /_/   \_\_| \_|____/|_____| |_|  
 `}
             </pre>
 
