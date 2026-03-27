@@ -1,26 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #a1a1aa;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-ibm-plex-mono);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  cursor: none;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-ibm-plex-mono), "JetBrains Mono", "IBM Plex Mono", monospace;
+  text-rendering: geometricPrecision;
+}
+
+::selection {
+  background: #ffffff;
+  color: #000000;
+}
+
+.ascii-blink {
+  animation: asciiBlink 1s steps(2, start) infinite;
+}
+
+.terminal-flicker {
+  animation: terminalFlicker 0.35s linear;
+}
+
+.terminal-hover-flicker {
+  animation: hoverTerminalFlicker 0.14s steps(2, end) 1;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.45);
+}
+
+.ascii-hover-invert {
+  transition:
+    background-color 120ms linear,
+    color 120ms linear;
+}
+
+.ascii-hover-invert:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.ascii-noise {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    #ffffff 1px,
+    transparent 0
+  );
+  background-size: 6px 6px;
+}
+
+.signal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.9);
+  animation: signalPulse 1.25s ease-in-out infinite;
+}
+
+.glitch-overlay {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.18) 0,
+      rgba(255, 255, 255, 0.18) 1px,
+      rgba(0, 0, 0, 0) 1px,
+      rgba(0, 0, 0, 0) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 2px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0) 5px
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.2),
+      rgba(0, 0, 0, 0.85)
+    );
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  mix-blend-mode: screen;
+}
+
+.main-name-box {
+  background: rgba(7, 7, 7, 0.92);
+}
+
+.main-name-solid {
+  font-family: "Manufacturing Consent", var(--font-ibm-plex-mono), monospace;
+  font-size: clamp(2.8rem, 14vw, 8.5rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.main-name-outline {
+  font-family: "Manufacturing Consent", var(--font-ibm-plex-mono), monospace;
+  font-size: clamp(3rem, 14.5vw, 9rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px #b9b9b9;
+  text-shadow: 0 0 0 #c7c7c7;
+}
+
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  transition: opacity 80ms linear;
+}
+
+@keyframes asciiBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes terminalFlicker {
+  0% {
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hoverTerminalFlicker {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.42;
+    transform: translateX(-1px);
+  }
+  60% {
+    opacity: 0.88;
+    transform: translateX(1px);
+  }
+  78% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes signalPulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+}
+
+@media (pointer: coarse) {
+  * {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
 }
